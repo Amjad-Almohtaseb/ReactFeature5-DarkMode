@@ -23,12 +23,16 @@ const theme = {
 };
 
 function App() {
-  const [currentTheme, setCurrentTheme] = useState("light");
+  const [currentTheme, setCurrentTheme] = useState(
+    localStorage.getItem("color") || "light" //null||light=light, dark||light=dark because it is the first data
+  );
   const ToggleCurrentTheme = () => {
     if (currentTheme === "light") {
       setCurrentTheme("dark");
+      localStorage.setItem("color", "dark"); //localstorage.color=dark it will stored inbrowser internal storage
     } else {
       setCurrentTheme("light");
+      localStorage.setItem("color", "light");
     }
   };
 
